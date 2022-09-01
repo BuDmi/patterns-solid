@@ -71,7 +71,7 @@ public class Shop {
             }
             case FILTER_BY_PRODUCT_PRICE -> {
                 menu.printCustomMessage("Enter product price");
-                float price = inputsProcessor.readUserFloatNumber();
+                int price = inputsProcessor.readUserIntegerNumber();
                 List<Product> filteredProducts = productFilter.filterProductsByPrice(products, price);
                 menu.printShopProducts(filteredProducts);
             }

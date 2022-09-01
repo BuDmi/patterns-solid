@@ -3,11 +3,11 @@ package org.example;
 import java.util.Objects;
 
 public class Product {
-    private final float price;
+    private final int price;
     private final String name;
     private final Producer producer;
 
-    Product(String name, float price, Producer producer) {
+    Product(String name, int price, Producer producer) {
         this.name = name;
         this.price = price;
         this.producer = producer;

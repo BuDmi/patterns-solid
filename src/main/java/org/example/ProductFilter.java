@@ -10,8 +10,8 @@ public class ProductFilter {
         return products.stream().filter(product -> name.equals(product.getName())).collect(Collectors.toList());
     }
 
-    public List<Product> filterProductsByPrice(List<Product> products, float price) {
-        return products.stream().filter(product -> price - product.getPrice() < 0.00001f).collect(Collectors.toList());
+    public List<Product> filterProductsByPrice(List<Product> products, int price) {
+        return products.stream().filter(product -> price == product.getPrice()).collect(Collectors.toList());
     }
 
     public List<Product> filterProductsByProducer(List<Product> products, String producerName) {
