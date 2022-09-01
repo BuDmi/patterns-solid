@@ -15,6 +15,11 @@ public class ConsoleInputProcessor implements InputsProcessor{
     }
 
     @Override
+    public float readUserFloatNumber() {
+        return scanner.nextFloat();
+    }
+
+    @Override
     public String readUserText() {
         return scanner.next();
     }
