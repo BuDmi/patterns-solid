@@ -104,6 +104,7 @@ public class Shop {
     final int GO_TO_MAIN_MENU = 2;
     private void printShopProducts() {
         menu.printShopProducts(products);
+        menu.printActions();
         int userNum = inputsProcessor.readUserIntegerNumber();
         switch (userNum) {
             case ADD_PRODUCT -> printMenuToAddProduct();
