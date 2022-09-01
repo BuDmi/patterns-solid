@@ -39,14 +39,11 @@ public class ConsoleMainMenu implements Menu {
             System.out.println((i + 1) + ". " + products.get(i).toString());
         }
         System.out.println();
-        System.out.println("Please choose your action:");
-        System.out.println("1. Add product to basket");
-        System.out.println("2. Return to main menu");
     }
 
     @Override
     public void printGoodBye() {
-        System.out.println("Now you can got to the cashbox and pay for product. Thank you!");
+        System.out.println("Now you can go to the cashbox and pay for product. Thank you!");
     }
 
     @Override
@@ -78,5 +75,12 @@ public class ConsoleMainMenu implements Menu {
         System.out.println("1. Add product to basket");
         System.out.println("2. Return to main menu");
         System.out.println("3. Pay on cashbox");
+    }
+
+    @Override
+    public void printActions() {
+        System.out.println("Please choose your action:");
+        System.out.println("1. Add product to basket");
+        System.out.println("2. Return to main menu");
     }
 }

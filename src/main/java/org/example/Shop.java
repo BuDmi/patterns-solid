@@ -28,53 +28,54 @@ public class Shop {
         }
         products.add(product);
     }
-
-    public String getName() {
-        return name;
-    }
-
+    final int SHOW_ALL_SHOP_PRODUCT = 1;
+    final int SHOW_FILTERED_PRODUCTS = 2;
+    final int SHOW_BASKET = 3;
+    final int END_SHOPPING = 4;
     public void run() {
+
         menu.printMainMenu(name);
         while (true) {
             int userNum;
-
             userNum = inputsProcessor.readUserIntegerNumber();
 
             switch (userNum) {
-                case 1:
+                case SHOW_ALL_SHOP_PRODUCT:
                     printShopProducts();
                     break;
-                case 2:
+                case SHOW_FILTERED_PRODUCTS:
                     printFilterMenu();
                     break;
-                case 3:
+                case SHOW_BASKET:
                     boolean isEndShopping = printProductBasket();
                     if (isEndShopping) {
                         return;
                     }
                     break;
-                case 4: return;
+                case END_SHOPPING: return;
             }
         }
     }
-
+    final int FILTER_BY_PRODUCT_NAME = 1;
+    final int FILTER_BY_PRODUCT_PRICE = 2;
+    final int FILTER_BY_PRODUCER_NAME = 3;
     private void printFilterMenu() {
         menu.printFilterMenu();
         int userNum = inputsProcessor.readUserIntegerNumber();
         switch (userNum) {
-            case 1 -> {
+            case FILTER_BY_PRODUCT_NAME -> {
                 menu.printCustomMessage("Enter product name");
                 String name = inputsProcessor.readUserText();
                 List<Product> filteredProducts = productFilter.filterProductsByName(products, name);
                 menu.printShopProducts(filteredProducts);
             }
-            case 2 -> {
+            case FILTER_BY_PRODUCT_PRICE -> {
                 menu.printCustomMessage("Enter product price");
                 int price = inputsProcessor.readUserIntegerNumber();
                 List<Product> filteredProducts = productFilter.filterProductsByPrice(products, price);
                 menu.printShopProducts(filteredProducts);
             }
-            case 3 -> {
+            case FILTER_BY_PRODUCER_NAME -> {
                 menu.printCustomMessage("Enter producer name");
                 String name = inputsProcessor.readUserText();
                 List<Product> filteredProducts = productFilter.filterProductsByProducer(products, name);
@@ -83,27 +84,30 @@ public class Shop {
         }
         menu.printMainMenu(name);
     }
-
+    final int BASKET_ADD_PRODUCT = 1;
+    final int BASKET_GO_TO_MAIN_MENU = 2;
+    final int BASKET_END_SHOPPING = 3;
     private boolean printProductBasket() {
         menu.printProductBasket(productBasket);
         int userNum = inputsProcessor.readUserIntegerNumber();
         switch (userNum) {
-            case 1 -> printMenuToAddProduct();
-            case 2 -> menu.printMainMenu(name);
-            case 3 -> {
+            case BASKET_ADD_PRODUCT -> printMenuToAddProduct();
+            case BASKET_GO_TO_MAIN_MENU -> menu.printMainMenu(name);
+            case BASKET_END_SHOPPING -> {
                 menu.printGoodBye();
                 return true;
             }
         }
         return false;
     }
-
+    final int ADD_PRODUCT = 1;
+    final int GO_TO_MAIN_MENU = 2;
     private void printShopProducts() {
         menu.printShopProducts(products);
         int userNum = inputsProcessor.readUserIntegerNumber();
         switch (userNum) {
-            case 1 -> printMenuToAddProduct();
-            case 2 -> menu.printMainMenu(name);
+            case ADD_PRODUCT -> printMenuToAddProduct();
+            case GO_TO_MAIN_MENU -> menu.printMainMenu(name);
         }
     }
 

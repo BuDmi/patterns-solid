@@ -9,4 +9,5 @@ public interface MainMenu {
     void printShopProducts(List<Product> products);
     void printGoodBye();
     void printCustomMessage(String msg);
+    void printActions();
 }
